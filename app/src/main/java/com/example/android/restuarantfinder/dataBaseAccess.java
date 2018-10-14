@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class dataBaseAccess {
         }
         cursor.close();
 
-       return rname;
+        return rname;
 
     }
 
@@ -74,6 +75,11 @@ public class dataBaseAccess {
         }
         cursor.close();
         return list;
+    }
+
+
+    public void openForWriting(){
+        this.db = openHelper.getWritableDatabase();
     }
 
     public ArrayList<allMenuMao> getDrinksMao(String itemType){
@@ -103,11 +109,17 @@ public class dataBaseAccess {
         return list;
     }
 
+    public void insert(String restname)
+    {
+        String str = "INSERT INTO restDetails(restID,restName,restAddress) VALUES(?,?,?)";
+        SQLiteStatement stmt = db.compileStatement(str);
+        stmt.bindLong(1, 9);
+        stmt.bindString(2,restname);
+        stmt.bindString(3, "andheri");
+        long i = stmt.executeInsert();
+    }
+
 
 }
-
-
-
-
 
 

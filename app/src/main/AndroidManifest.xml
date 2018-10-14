@@ -20,7 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartUpActivity">
+        <activity android:name=".AdminOrUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,8 +54,15 @@
         <activity android:name=".menuMaoStarter" />
         <activity android:name=".menuMaoDrinks" />
         <activity android:name=".CartActivity" />
-        <activity android:name=".BillPayment"></activity>
-        <activity android:name=".Addreview"></activity>
+        <activity android:name=".BillPayment" />
+        <activity android:name=".Addreview" />
+        <activity android:name=".StartUpActivity" />
+        <activity android:name=".AdminLogin" />
+        <activity android:name=".AdminPassword" />
+        <activity android:name=".AdminFunctionalitiesPage" />
+        <activity android:name=".AddRestaurantPage" />
+        <activity android:name=".RestaurantManagerLogin" />
+        <activity android:name=".ViewOrders"></activity>
     </application>
 
 </manifest>
