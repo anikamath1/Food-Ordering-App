@@ -1,0 +1,286 @@
+<html>
+<head>
+</head>
+<title>
+
+
+</title>
+<body>
+
+
+
+<canvas width="800" height="800"></canvas>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+ border=function()
+  {
+  let cx = document.querySelector("canvas").getContext("2d");
+  cx.fillStyle = "#ADFF2F";
+  cx.fillRect(40, 40, 450, 450);
+  
+  };
+  draw = function($pathFromx, $pathFromy, $pathTox, $pathToy)
+  {
+    let context= document.querySelector("canvas").getContext("2d");
+    context.strokeStyle = "blue";
+    context.lineWidth=3;
+    context.moveTo($pathFromx, $pathFromy);
+    context.lineTo($pathTox, $pathToy);
+    context.stroke(); 
+  };
+  frame1 = function() 
+  {
+     draw (60, 470, 270,470);
+  };
+  frame2= function() 
+  {
+     draw (155, 470, 155, 80);
+  };
+  frame3=function()
+  {
+  	draw(155,80,350,80);
+  };
+  frame4=function()
+  {
+  	draw(350,80,350,100);
+  };
+  frame5=function()
+  {
+  	draw(350,180,350,350);
+  };
+  leftleg=function()
+  {
+  	draw(350,350,390,430);
+  };
+  rightleg=function()
+  {
+  	draw(350,350,310,430);
+  };
+  leftarm=function()
+  {
+  	draw(350,220,310,290);
+  }
+  rightarm=function()
+  {
+  	draw(350,220,390,290);
+  }
+  head = function()
+  {
+      let context = document.querySelector("canvas").getContext("2d");
+      context.beginPath();
+      context.arc(350,140,40, 0, Math.PI*2, true);
+      context.stroke();
+   };
+
+var Abuttonpressed=false;
+var Bbuttonpressed=false;
+var Cbuttonpressed=false;
+var Dbuttonpressed=false;
+var buttonpressed=false;
+$("document").ready(function() {
+    $("body").css("background-color","cyan");
+	$("button").not('[id^="10"]').hover(function(){
+	$(this).css('border','4px solid black');
+});
+	$("button").not('[id^="10"]').mouseout(function(){
+	$(this).css('border','1px solid red');
+});
+});
+
+function myfuncA()
+{	document.getElementById("100").innerHTML="A";
+	Abuttonpressed=true;
+	buttonpressed=true;
+	$("#buttonA").slideUp("slow");
+	$("#100").css({
+	"background-color":"yellow",
+	'color' : 'blue',
+	'border' : '2px dashed blue' 
+	});
+	playfunc();
+}
+
+
+function myfuncB()
+{	document.getElementById("101").innerHTML="B";
+	Bbuttonpressed=true;
+	buttonpressed=true;
+	$("#buttonB").slideUp("slow");
+	$("#101").css({
+	"background-color":"yellow",
+	'color' : 'blue',
+	'border' : '2px dashed blue' 
+	});
+	playfunc();
+}
+
+
+
+function myfuncC()
+{	document.getElementById("102").innerHTML="C";
+	Cbuttonpressed=true;
+	buttonpressed=true;
+	$("#3").slideUp("slow");
+	$("#102").css({
+	"background-color":"yellow",
+	'color' : 'blue',
+	'border' : '2px dashed blue' 
+	});
+	playfunc();
+}
+var count=1;
+function whatToDraw(j)
+{
+	switch(j)
+	{
+		case 1:
+		  border();
+		  count=count+1;
+		  break;
+		case 2:
+			frame1();
+			 count=count+1;
+			break;
+		case 3:
+			$("p").html('YOUR HINT IS :IT IS A DANCE FILM');
+			frame2();
+			 count=count+1;
+			break;
+		case 4:
+			frame3();
+			 count=count+1;
+			break;
+		case 5:
+			frame4();
+			 count=count+1;
+			break;
+		case 6:
+			head();
+			 count=count+1;
+			break;
+		case 7:
+			frame5();
+			 count=count+1;
+			break;
+		case 8:
+			leftarm();
+			 count=count+1;
+			break;
+		case 9:
+			rightarm();			
+			$('body').css('background-color','red');
+			alert('be careful now');
+			 count=count+1;
+			break;
+		case 10:
+			rightleg();
+			 count=count+1;
+			break;
+		case 11:
+			leftleg();
+			count=count+1;
+			alert("ALL YOUR CHANCES ARE OVER");
+			window.open('loginpage.html'); 
+			window.close();
+			break;
+	}
+
+}
+
+function myfuncE()
+{	
+	alert("OOPS WRONG ANSWER!!!!!!");
+	playfunc();
+}
+
+
+function myfuncD()
+{	document.getElementById("103").innerHTML="D";
+	Dbuttonpressed=true;
+	buttonpressed=true;
+	$("#4").slideUp("slow");
+	$("#103").css({
+	"background-color":"yellow",
+	'color' : 'blue',
+	'border' : '2px dashed blue' 
+	});
+	playfunc();
+}
+
+var i=0;
+function playfunc()
+{	
+		alert("ENTER NEXT CHARACTER");
+	
+			
+			if(Abuttonpressed || Bbuttonpressed ||  Cbuttonpressed || Dbuttonpressed)
+			{
+				alert("you are on");
+				if(Abuttonpressed==true)
+				Abuttonpressed=false;
+				if(Bbuttonpressed==true)
+				Bbuttonpressed=false;
+				if(Cbuttonpressed==true)
+				Cbuttonpressed=false;
+				if(Dbuttonpressed==true)
+				Dbuttonpressed=false;
+			}
+			else
+			{
+				alert("ooopsss wrong answer!!!!");
+				whatToDraw(count);
+				alert("the value of count is " + count);
+			}
+			
+			if(Abuttonpressed && Bbuttonpressed && Cbuttonpressed && Dbuttonpressed)
+			{
+				alert("you win!!!!!!");
+				buttonpressed=false;					
+			}
+
+}
+
+</script>
+
+
+
+
+
+ </div>
+ <div style="margin-top:0px;margin-bottom:20px;position:relative">
+<button type="button" style="width:200;border:1px solid black;color:blue;height:100" id='100'>GUESS</button> 
+ <button type="button" style="width:200;border:1px solid black;color:blue;height:100" id='101'>GUESS</button> 
+ <button type="button" style="width:200;border:1px solid black;color:blue;height:100" id='102'>GUESS</button> 
+ <button type="button" style="width:200;border:1px solid black;color:blue;height:100" id='103'>GUESS</button>
+ 
+<div id='hintdiv'><p style="position:relative;top:0px;right:0px;background-color:yellow;color:red;"></p></div>
+
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='buttonA' onclick="myfuncA();">A</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='buttonB' onclick="myfuncB();">B</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='3' onclick="myfuncC();">C</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='4' onclick="myfuncD();">D</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='5' onclick="myfuncE();">E</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='6' onclick="myfuncE();">F</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='7' onclick="myfuncE();">G</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='8' onclick="myfuncE();">H</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='9' onclick="myfuncE();">I</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='10' onclick="myfuncE();">J</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='11' onclick="myfuncE();">K</button> 
+  <button type="button" style="width:100;border:1px solid red;color:red;" id='12' onclick="myfuncE();">L</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='13' onclick="myfuncE();">M</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='14' onclick="myfuncE();">N</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='15' onclick="myfuncE();">O</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='16' onclick="myfuncE();">P</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='17' onclick="myfuncE();">Q</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='18' onclick="myfuncE();">R</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='19' onclick="myfuncE();">S</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='20' onclick="myfuncE();">T</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='21' onclick="myfuncE();">U</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='22' onclick="myfuncE();">V</button> 
+  <button type="button" style="width:100;border:1px solid red;color:red;" id='23' onclick="myfuncE();">W</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='24' onclick="myfuncE();">X</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='25' onclick="myfuncE();">Y</button> 
+ <button type="button" style="width:100;border:1px solid red;color:red;" id='26' onclick="myfuncE();">Z</button>
+ </div>
+</body>
+</html>
